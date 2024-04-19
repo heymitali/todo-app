@@ -23,26 +23,40 @@ const TaskList = ({ setList }) => {
   return (
     <div>
       {todoList && todoList.length > 0 && (
-        <h1 className="text-3xl font-semibold mt-6 mb-6 text-center">
-          Tasks List
-        </h1>
+        <h1 className="text-3xl font-semibold mt-6 mb-6 text-center">TASKS</h1>
       )}
       <ul>
         {todoList &&
           todoList.map((item) => {
             return (
               <li key={item.id}>
-                <div className="flex justify-around">
-                  <span
-                    className={`hover:cursor-pointer text-xl mb-3 ${
-                      item.isComplete ? "line-through" : ""
-                    }`}
-                    onClick={() => handleCheck(item)}
-                    key={item.id}
-                  >
-                    {item.text}
-                  </span>
-                  <button className="" onClick={() => handleRemove(item)}>
+                <div className="flex justify-between mb-3">
+                  <div className="flex">
+                    <img
+                      className="w-auto h-9 hover:cursor-pointer pt-2"
+                      onClick={() => handleCheck(item)}
+                      src={`${
+                        item.isComplete
+                          ? "https://cdn-icons-png.flaticon.com/128/1828/1828640.png"
+                          : "https://cdn-icons-png.flaticon.com/128/15469/15469533.png"
+                      }`}
+                    />
+                    <span
+                      className={`w-[20rem] p-2 text-xl truncate ${
+                        item.isComplete ? "line-through" : ""
+                      }`}
+                      key={item.id}
+                    >
+                      <span
+                        className="hover:cursor-pointer px-3"
+                        onClick={() => handleCheck(item)}
+                      >
+                        {item.text}
+                      </span>
+                    </span>
+                  </div>
+
+                  <button className="w-10" onClick={() => handleRemove(item)}>
                     ✖️
                   </button>
                 </div>

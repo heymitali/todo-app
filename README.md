@@ -38,6 +38,9 @@ These instructions will get you a copy of the project up and running on your loc
    ```
 
 3. Build and Start the server
+
    ```sh
    npm run build; npm start
    ```
+
+4. Open your browser and navigate to http://localhost:3000

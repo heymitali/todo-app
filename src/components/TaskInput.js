@@ -18,21 +18,23 @@ const TaskInput = () => {
   };
 
   return (
-    <form className="" onSubmit={handleSubmit}>
-      <input
-        className="border-2 border-gray-300 p-2 w-96 rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
-        placeholder="Add a task"
-        type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      ></input>
-      <button
-        className="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-        type="submit"
-        onClick={handleAddTodo}
-      >
-        Add
-      </button>
+    <form className="flex justify-around mb-5" onSubmit={handleSubmit}>
+      <div>
+        <input
+          className="border-2 border-gray-300 p-2 w-96 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+          placeholder="Add a task"
+          type="text"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        ></input>
+        <button
+          className="ml-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 border border-blue-700 rounded"
+          type="submit"
+          onClick={handleAddTodo}
+        >
+          Add
+        </button>
+      </div>
     </form>
   );
 };
