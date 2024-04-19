@@ -13,11 +13,17 @@ const taskSlice = createSlice({
       const index = action.payload;
       state.todoList.splice(index, 1);
     },
-
     toggleCheck: (state, action) => {
       const index = action.payload;
-      state.todoList[index].isComplete = true;
-      state.todoList.push(state.todoList.splice(index, 1)[0]);
+      const prevCheckState = state.todoList[index].isComplete;
+
+      if (prevCheckState) {
+        state.todoList[index].isComplete = false;
+        state.todoList.unshift(state.todoList.splice(index, 1)[0]);
+      } else {
+        state.todoList[index].isComplete = true;
+        state.todoList.push(state.todoList.splice(index, 1)[0]);
+      }
     },
   },
 });

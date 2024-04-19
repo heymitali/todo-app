@@ -1,8 +1,7 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCheck, removeTask } from "../utils/taskSlice";
 
-const TaskList = () => {
+const TaskList = ({ list, setList }) => {
   const dispatch = useDispatch();
   const todoList = useSelector((store) => store.todo.todoList);
 
@@ -20,16 +19,29 @@ const TaskList = () => {
 
   return (
     <div>
-      <h1>Todo List</h1>
+      {todoList && todoList.length > 0 && (
+        <h1 className="text-3xl font-semibold mt-6 mb-6 text-center">
+          Tasks List
+        </h1>
+      )}
       <ul>
         {todoList.map((item, index) => {
           return (
             <li key={index}>
-              <button onClick={() => handleCheck(item)} key={item.id}>
-                check
-              </button>
-              {item.text}
-              <button onClick={() => handleRemove(item)}>remove</button>
+              <div className="flex justify-around">
+                <span
+                  className={`hover:cursor-pointer text-xl mb-3 ${
+                    item.isComplete ? "line-through" : ""
+                  }`}
+                  onClick={() => handleCheck(item)}
+                  key={item.id}
+                >
+                  {item.text}
+                </span>
+                <button className="" onClick={() => handleRemove(item)}>
+                  ✖️
+                </button>
+              </div>
             </li>
           );
         })}
