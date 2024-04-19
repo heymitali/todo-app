@@ -22,7 +22,7 @@ const Todo = () => {
   }, [list]);
 
   return (
-    <div className="flex justify-around">
+    <div className="flex justify-around p-5">
       <div className="flex flex-col">
         <h1 className="font-bold text-4xl mt-7 mb-7 text-center">TODO App</h1>
         <TaskInput />

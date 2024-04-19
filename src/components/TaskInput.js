@@ -21,7 +21,7 @@ const TaskInput = () => {
     <form className="flex justify-around mb-5" onSubmit={handleSubmit}>
       <div>
         <input
-          className="border-2 border-gray-300 p-2 w-96 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
+          className="border-2 border-gray-300 p-2 w-[15rem] md:w-[28rem] rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent"
           placeholder="Add a task"
           type="text"
           value={value}
