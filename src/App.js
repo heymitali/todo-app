@@ -1,7 +1,7 @@
 import React from "react";
 import Todo from "./components/Todo";
 import { Provider } from "react-redux";
-import appStore from "./components/utils/appStore";
+import appStore from "./utils/appStore";
 
 const App = () => {
   return (
