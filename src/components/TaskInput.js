@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../utils/taskSlice";
 
-const TaskInput = ({ list, setList }) => {
+const TaskInput = () => {
   const dispatch = useDispatch();
   const [value, setValue] = useState("");
 
@@ -13,7 +13,6 @@ const TaskInput = ({ list, setList }) => {
   const handleAddTodo = () => {
     if (!value || value === "") return;
     const task = { text: value, id: Date.now(), isComplete: false };
-    // setList([...list, task]);
     dispatch(addTask(task));
     setValue("");
   };

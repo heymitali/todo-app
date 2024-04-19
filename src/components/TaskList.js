@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleCheck, removeTask } from "../utils/taskSlice";
 
-const TaskList = ({ list, setList }) => {
+const TaskList = ({ setList }) => {
   const dispatch = useDispatch();
   const todoList = useSelector((store) => store.todo.todoList);
 
@@ -17,6 +17,9 @@ const TaskList = ({ list, setList }) => {
     dispatch(removeTask(index));
   };
 
+  // this will call the useEffect hook, which will ultimately save the updated list to local storage
+  setList(todoList);
+
   return (
     <div>
       {todoList && todoList.length > 0 && (
@@ -25,26 +28,27 @@ const TaskList = ({ list, setList }) => {
         </h1>
       )}
       <ul>
-        {todoList.map((item, index) => {
-          return (
-            <li key={index}>
-              <div className="flex justify-around">
-                <span
-                  className={`hover:cursor-pointer text-xl mb-3 ${
-                    item.isComplete ? "line-through" : ""
-                  }`}
-                  onClick={() => handleCheck(item)}
-                  key={item.id}
-                >
-                  {item.text}
-                </span>
-                <button className="" onClick={() => handleRemove(item)}>
-                  ✖️
-                </button>
-              </div>
-            </li>
-          );
-        })}
+        {todoList &&
+          todoList.map((item) => {
+            return (
+              <li key={item.id}>
+                <div className="flex justify-around">
+                  <span
+                    className={`hover:cursor-pointer text-xl mb-3 ${
+                      item.isComplete ? "line-through" : ""
+                    }`}
+                    onClick={() => handleCheck(item)}
+                    key={item.id}
+                  >
+                    {item.text}
+                  </span>
+                  <button className="" onClick={() => handleRemove(item)}>
+                    ✖️
+                  </button>
+                </div>
+              </li>
+            );
+          })}
       </ul>
     </div>
   );

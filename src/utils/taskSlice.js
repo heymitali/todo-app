@@ -25,8 +25,12 @@ const taskSlice = createSlice({
         state.todoList.push(state.todoList.splice(index, 1)[0]);
       }
     },
+    setTodoList: (state, action) => {
+      state.todoList = action.payload;
+    },
   },
 });
 
 export default taskSlice.reducer;
-export const { addTask, removeTask, toggleCheck } = taskSlice.actions;
+export const { addTask, removeTask, toggleCheck, setTodoList } =
+  taskSlice.actions;
